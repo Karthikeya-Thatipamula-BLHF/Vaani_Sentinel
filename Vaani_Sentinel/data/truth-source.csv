@@ -1,0 +1,21 @@
+id,text,category,verified,source
+1,"Meditation reduces stress and improves mental clarity",health,true,scientific_study
+2,"Regular exercise benefits cardiovascular health",health,true,medical_research
+3,"Reading books enhances cognitive function",education,true,academic_study
+4,"Gratitude practice improves overall well-being",psychology,true,research_paper
+5,"Proper sleep is essential for immune system function",health,true,medical_journal
+6,"Learning new skills creates neural pathways",neuroscience,true,brain_research
+7,"Social connections contribute to longevity",psychology,true,longitudinal_study
+8,"Mindfulness practice reduces anxiety",mental_health,true,clinical_trial
+9,"Nature exposure improves mood and reduces stress",psychology,true,environmental_study
+10,"Balanced nutrition supports optimal brain function",nutrition,true,dietary_research
+11,"Regular hydration is crucial for bodily functions",health,true,medical_fact
+12,"Deep breathing exercises activate relaxation response",wellness,true,physiological_study
+13,"Positive thinking patterns influence mental health",psychology,true,cognitive_research
+14,"Physical activity releases endorphins",health,true,biochemical_fact
+15,"Quality relationships enhance life satisfaction",psychology,true,social_research
+16,"Continuous learning promotes neuroplasticity",neuroscience,true,brain_study
+17,"Adequate rest improves decision-making abilities",cognitive_science,true,sleep_research
+18,"Compassion practice increases emotional resilience",psychology,true,mindfulness_study
+19,"Creative activities stimulate brain development",neuroscience,true,creativity_research
+20,"Healthy boundaries improve mental well-being",psychology,true,therapeutic_research

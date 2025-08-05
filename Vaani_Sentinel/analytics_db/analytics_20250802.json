@@ -1,0 +1,74 @@
+[
+  {
+    "analytics_id": "7e3e40bc-894d-410a-924d-0bebd4bfebf4",
+    "post_id": "8189a5e6-1973-4a45-b907-35ac60cd5390",
+    "platform": "twitter",
+    "metrics": {
+      "views": 2879,
+      "likes": 70,
+      "shares": 9,
+      "comments": 6,
+      "clicks": 53,
+      "saves": 13,
+      "engagement_rate": 0.05244876693296283,
+      "reach": 1332,
+      "impressions": 2879
+    },
+    "created_at": "2025-08-02T08:30:57.995565",
+    "stored_at": "2025-08-02T08:30:57.995617"
+  },
+  {
+    "analytics_id": "c8e685aa-f713-41fd-868c-ea6bac6dcd12",
+    "post_id": "76e676fe-6085-41cd-a9b8-a1242952e253",
+    "platform": "twitter",
+    "metrics": {
+      "views": 8361,
+      "likes": 384,
+      "shares": 56,
+      "comments": 34,
+      "clicks": 204,
+      "saves": 112,
+      "engagement_rate": 0.09448630546585336,
+      "reach": 4428,
+      "impressions": 8361
+    },
+    "created_at": "2025-08-02T09:22:30.898858",
+    "stored_at": "2025-08-02T09:22:30.898909"
+  },
+  {
+    "analytics_id": "3856da94-64f8-49a8-83a3-0eb48c419a3e",
+    "post_id": "85c6b79b-8e13-4e36-9192-770bbb85bfcc",
+    "platform": "twitter",
+    "metrics": {
+      "views": 1856,
+      "likes": 62,
+      "shares": 8,
+      "comments": 4,
+      "clicks": 78,
+      "saves": 9,
+      "engagement_rate": 0.08674568965517242,
+      "reach": 958,
+      "impressions": 1856
+    },
+    "created_at": "2025-08-02T09:31:11.330138",
+    "stored_at": "2025-08-02T09:31:11.330216"
+  },
+  {
+    "analytics_id": "73f76df1-b388-4036-9b32-0746cbb0bd50",
+    "post_id": "1f315a3f-12fa-4e9a-8a57-26a86b36baea",
+    "platform": "twitter",
+    "metrics": {
+      "views": 6904,
+      "likes": 187,
+      "shares": 29,
+      "comments": 12,
+      "clicks": 251,
+      "saves": 27,
+      "engagement_rate": 0.07329084588644265,
+      "reach": 3098,
+      "impressions": 6904
+    },
+    "created_at": "2025-08-02T10:25:46.667513",
+    "stored_at": "2025-08-02T10:25:46.667593"
+  }
+]

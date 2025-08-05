@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaani Sentinel X - API Curl Commands</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .method {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: white;
+            margin-right: 10px;
+        }
+        .get { background-color: #28a745; }
+        .post { background-color: #007bff; }
+        .put { background-color: #ffc107; color: #212529; }
+        .delete { background-color: #dc3545; }
+        .curl-command {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        .description {
+            background: #e8f4fd;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            margin: 10px 0;
+        }
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .base-url {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .copy-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            float: right;
+            margin-top: -5px;
+        }
+        .copy-btn:hover {
+            background: #2980b9;
+        }
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin: 5px 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Vaani Sentinel X - API Curl Commands</h1>
+        
+        <div class="base-url">
+            🌐 Deployed Base URL: https://vaani-sentinel.onrender.com
+        </div>
+
+        <div class="note">
+            <strong>📝 Important Notes:</strong>
+            <ul>
+                <li>Replace <code>YOUR_TOKEN_HERE</code> with the actual JWT token from login</li>
+                <li>Replace <code>CONTENT_ID_HERE</code> with actual content IDs</li>
+                <li>All endpoints except health check require authentication</li>
+                <li>First login to get your JWT token, then use it for other requests</li>
+            </ul>
+        </div>
+
+        <div class="toc">
+            <h3>📋 Table of Contents</h3>
+            <ul>
+                <li><a href="#auth">🔐 Authentication</a></li>
+                <li><a href="#content">📝 Content Management</a></li>
+                <li><a href="#ai-generation">🤖 AI Content Generation</a></li>
+                <li><a href="#multilingual">🌍 Multilingual Processing</a></li>
+                <li><a href="#analytics">📊 Analytics</a></li>
+                <li><a href="#security">🔒 Security</a></li>
+                <li><a href="#system">⚙️ System</a></li>
+            </ul>
+        </div>
+
+        <h2 id="auth">🔐 Authentication</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Login</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Authenticate and get JWT token<br>
+                <strong>Input:</strong> Username and password<br>
+                <strong>Output:</strong> JWT access token, token type, expiry time
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "admin",
+    "password": "secret"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Current User Info</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get information about the currently authenticated user<br>
+                <strong>Input:</strong> JWT token in header<br>
+                <strong>Output:</strong> User ID, username, role
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/auth/me" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Validate Token</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Check if JWT token is valid<br>
+                <strong>Input:</strong> JWT token in header<br>
+                <strong>Output:</strong> Validation status and user info
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/auth/validate" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Logout</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Logout current user session<br>
+                <strong>Input:</strong> JWT token in header<br>
+                <strong>Output:</strong> Logout confirmation message
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/auth/logout" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <h2 id="content">📝 Content Management</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Create Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Create a single content item<br>
+                <strong>Input:</strong> Text, content type, language, metadata<br>
+                <strong>Output:</strong> Content ID, processed content details
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/content/create" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "This is a sample inspirational message about mindfulness and peace.",
+    "content_type": "tweet",
+    "language": "en",
+    "metadata": {
+      "category": "inspirational",
+      "tags": ["mindfulness", "peace"]
+    }
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Upload JSON Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Upload multiple content items via JSON<br>
+                <strong>Input:</strong> Array of content objects<br>
+                <strong>Output:</strong> Processing status and content IDs
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/content/upload-json" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "file_type": "json",
+    "data": [
+      {"text": "First inspirational message about gratitude"},
+      {"text": "Second message about inner peace"},
+      {"text": "Third message about mindful living"}
+    ]
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> List Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get list of all content with pagination<br>
+                <strong>Input:</strong> Skip, limit, verified_only parameters<br>
+                <strong>Output:</strong> Array of content items with metadata
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/content/list?skip=0&limit=10&verified_only=false" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Specific Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get details of a specific content item<br>
+                <strong>Input:</strong> Content ID in URL path<br>
+                <strong>Output:</strong> Complete content details including metadata
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/content/CONTENT_ID_HERE" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <h2 id="ai-generation">🤖 AI Content Generation</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Generate Platform Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Generate platform-specific content from existing content<br>
+                <strong>Input:</strong> Content ID, target platforms, tone, language<br>
+                <strong>Output:</strong> Generated content for each platform and voice scripts
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/generate-content" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_id": "CONTENT_ID_HERE",
+    "platforms": ["twitter", "instagram", "linkedin"],
+    "tone": "uplifting",
+    "language": "en"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Generate Voice Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Generate voice scripts for audio content<br>
+                <strong>Input:</strong> Content ID, language, tone, voice tag<br>
+                <strong>Output:</strong> Voice script optimized for audio delivery
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/generate-voice" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_id": "CONTENT_ID_HERE",
+    "language": "hi",
+    "tone": "devotional",
+    "voice_tag": "hi_in_female_devotional"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Batch Generate Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Generate content for multiple items at once<br>
+                <strong>Input:</strong> Array of content IDs, platforms, tone, language<br>
+                <strong>Output:</strong> Generated content for all specified items
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/batch-generate" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_ids": ["CONTENT_ID_1", "CONTENT_ID_2", "CONTENT_ID_3"],
+    "platforms": ["twitter", "instagram"],
+    "tone": "casual",
+    "language": "en"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Supported Platforms</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get list of all supported social media platforms<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Array of platform names and their specifications
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/agents/platforms" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Supported Tones</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get list of all supported content tones<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Array of tone options (formal, casual, devotional, etc.)
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/agents/tones" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Supported Languages</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get list of all supported languages<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Array of language codes and names (Hindi, Sanskrit, English, etc.)
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/agents/languages" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <h2 id="multilingual">🌍 Multilingual Processing</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Detect Language</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Automatically detect the language of given text<br>
+                <strong>Input:</strong> Text content to analyze<br>
+                <strong>Output:</strong> Detected language code and confidence score
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/detect-language" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content": "नमस्ते, आज का दिन बहुत सुंदर है।"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Process Multilingual Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Process content for multiple target languages<br>
+                <strong>Input:</strong> Content ID, target languages, auto-detect option<br>
+                <strong>Output:</strong> Processed content in all target languages
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/process-multilingual" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_id": "CONTENT_ID_HERE",
+    "target_languages": ["hi", "sa", "mr"],
+    "auto_detect": true
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Translate Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Translate content to specified languages<br>
+                <strong>Input:</strong> Content ID, target languages, tone<br>
+                <strong>Output:</strong> Translated content maintaining original tone
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/translate" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_id": "CONTENT_ID_HERE",
+    "target_languages": ["hi", "sa"],
+    "tone": "devotional"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Batch Translate</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Translate multiple content items at once<br>
+                <strong>Input:</strong> Array of content IDs, target languages<br>
+                <strong>Output:</strong> Translations for all specified content items
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/batch-translate" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_ids": ["CONTENT_ID_1", "CONTENT_ID_2"],
+    "target_languages": ["hi", "sa", "mr"]
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Content Translations</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get all translations for a specific content item<br>
+                <strong>Input:</strong> Content ID in URL path<br>
+                <strong>Output:</strong> All available translations with language codes
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/multilingual/translations/CONTENT_ID_HERE" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <h2 id="analytics">📊 Analytics</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Generate Engagement Metrics</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Generate simulated engagement metrics for a post<br>
+                <strong>Input:</strong> Post ID, platform, content type, language, posting time<br>
+                <strong>Output:</strong> Detailed engagement metrics (views, likes, shares, etc.)
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/analytics/generate-engagement" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "post_id": "post-12345",
+    "platform": "twitter",
+    "content_type": "inspirational",
+    "language": "en",
+    "posting_time": "2024-01-01T12:00:00Z"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Performance Insights</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get performance insights for specified time period<br>
+                <strong>Input:</strong> Number of days to analyze<br>
+                <strong>Output:</strong> Performance trends and insights
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/performance-insights?days=7" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Weekly Strategy</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get recommended content strategy for the week<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Strategic recommendations and content calendar
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/weekly-strategy" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Get Post Analytics</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get detailed analytics for a specific post<br>
+                <strong>Input:</strong> Post ID in URL path<br>
+                <strong>Output:</strong> Comprehensive post performance data
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/post-analytics/POST_ID_HERE" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Platform Comparison</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Compare performance across different platforms<br>
+                <strong>Input:</strong> Number of days to analyze<br>
+                <strong>Output:</strong> Comparative analytics across platforms
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/platform-comparison?days=30" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Engagement Trends</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get engagement trends for specific platform and time period<br>
+                <strong>Input:</strong> Days to analyze, platform filter<br>
+                <strong>Output:</strong> Trend analysis and engagement patterns
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/engagement-trends?days=30&platform=twitter" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <h2 id="security">🔒 Security</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Analyze Content Security</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Analyze content for security risks and inappropriate content<br>
+                <strong>Input:</strong> Content ID to analyze<br>
+                <strong>Output:</strong> Security flags, risk level, and recommendations
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/analyze-content" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_id": "CONTENT_ID_HERE"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Encrypt Content</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Encrypt sensitive content for secure storage<br>
+                <strong>Input:</strong> Content text and language<br>
+                <strong>Output:</strong> Encrypted content with encryption metadata
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/encrypt-content" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content": "Sensitive content to encrypt",
+    "language": "en"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Create Encrypted Archive</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Create encrypted archive of multiple content items<br>
+                <strong>Input:</strong> Array of content IDs and language<br>
+                <strong>Output:</strong> Encrypted archive with access credentials
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/create-archive" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content_ids": ["CONTENT_ID_1", "CONTENT_ID_2"],
+    "language": "en"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Activate Kill Switch</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Emergency shutdown of all system operations<br>
+                <strong>Input:</strong> Reason for activation<br>
+                <strong>Output:</strong> Kill switch activation confirmation
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/kill-switch/activate" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "reason": "Security breach detected"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> Deactivate Kill Switch</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Restore normal system operations after kill switch<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Kill switch deactivation confirmation
+            </div>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/kill-switch/deactivate" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Check Kill Switch Status</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Check current status of the kill switch<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Kill switch status and last activation details
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/security/kill-switch/status" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Security Dashboard</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get comprehensive security overview and metrics<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Security status, recent alerts, and system health
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/security/dashboard" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
+        </div>
+
+        <h2 id="system">⚙️ System</h2>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Root Endpoint</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get basic API information and status<br>
+                <strong>Input:</strong> None<br>
+                <strong>Output:</strong> Welcome message, version, status, documentation link
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> Health Check</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Check if the API is running and healthy<br>
+                <strong>Input:</strong> None<br>
+                <strong>Output:</strong> Health status, timestamp, version
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/health"</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> API Documentation</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Access interactive API documentation (Swagger UI)<br>
+                <strong>Input:</strong> None<br>
+                <strong>Output:</strong> Interactive API documentation interface
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/docs"</div>
+        </div>
+
+        <div class="note">
+            <h3>🔧 Testing with Postman</h3>
+            <p><strong>Step-by-step guide:</strong></p>
+            <ol>
+                <li><strong>Import to Postman:</strong> Copy any curl command and use "Import" → "Raw text" in Postman</li>
+                <li><strong>Get Token:</strong> First run the login endpoint to get your JWT token</li>
+                <li><strong>Set Authorization:</strong> Copy the access_token from login response</li>
+                <li><strong>Add to Headers:</strong> Add "Authorization: Bearer YOUR_TOKEN" to other requests</li>
+                <li><strong>Test Endpoints:</strong> Start with health check, then login, then other endpoints</li>
+            </ol>
+        </div>
+
+        <div class="note">
+            <h3>📋 Common Response Codes</h3>
+            <ul>
+                <li><strong>200:</strong> Success - Request completed successfully</li>
+                <li><strong>400:</strong> Bad Request - Invalid input data</li>
+                <li><strong>401:</strong> Unauthorized - Invalid or missing JWT token</li>
+                <li><strong>404:</strong> Not Found - Resource doesn't exist</li>
+                <li><strong>500:</strong> Internal Server Error - Server-side issue</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>🚀 Quick Start Example</h3>
+            <p><strong>1. First, get your token:</strong></p>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "password": "secret"}'</div>
+
+            <p><strong>2. Then create content:</strong></p>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/content/create" \
+  -H "Authorization: Bearer YOUR_TOKEN_FROM_STEP_1" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Hello World!", "content_type": "tweet", "language": "en"}'</div>
+
+            <p><strong>3. Finally, generate platform content:</strong></p>
+            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/generate-content" \
+  -H "Authorization: Bearer YOUR_TOKEN_FROM_STEP_1" \
+  -H "Content-Type: application/json" \
+  -d '{"content_id": "CONTENT_ID_FROM_STEP_2", "platforms": ["twitter"], "tone": "casual", "language": "en"}'</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Add copy functionality to curl commands
+        document.querySelectorAll('.curl-command').forEach(function(element) {
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-btn';
+            copyBtn.textContent = 'Copy';
+            copyBtn.onclick = function() {
+                navigator.clipboard.writeText(element.textContent);
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => copyBtn.textContent = 'Copy', 2000);
+            };
+            element.parentNode.insertBefore(copyBtn, element);
+        });
+
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.toc a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

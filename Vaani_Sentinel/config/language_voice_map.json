@@ -1,0 +1,351 @@
+{
+  "language_voice_mapping": {
+    "en": {
+      "formal": {
+        "voice_tag": "en_us_male_professional",
+        "description": "Professional male voice for formal content",
+        "sample_rate": 22050,
+        "voice_id": "en_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "en_us_female_conversational",
+        "description": "Friendly female voice for casual content",
+        "sample_rate": 22050,
+        "voice_id": "en_casual_f_001"
+      },
+      "devotional": {
+        "voice_tag": "en_us_female_calm",
+        "description": "Calm, soothing female voice for spiritual content",
+        "sample_rate": 22050,
+        "voice_id": "en_devotional_f_001"
+      },
+      "neutral": {
+        "voice_tag": "en_us_neutral",
+        "description": "Neutral voice for general content",
+        "sample_rate": 22050,
+        "voice_id": "en_neutral_001"
+      },
+      "uplifting": {
+        "voice_tag": "en_us_female_energetic",
+        "description": "Energetic female voice for motivational content",
+        "sample_rate": 22050,
+        "voice_id": "en_uplifting_f_001"
+      }
+    },
+    "hi": {
+      "formal": {
+        "voice_tag": "hi_in_male_professional",
+        "description": "Professional Hindi male voice",
+        "sample_rate": 22050,
+        "voice_id": "hi_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "hi_in_female_conversational",
+        "description": "Friendly Hindi female voice",
+        "sample_rate": 22050,
+        "voice_id": "hi_casual_f_001"
+      },
+      "devotional": {
+        "voice_tag": "hi_in_female_devotional",
+        "description": "Devotional Hindi female voice for spiritual content",
+        "sample_rate": 22050,
+        "voice_id": "hi_devotional_f_001"
+      },
+      "neutral": {
+        "voice_tag": "hi_in_neutral",
+        "description": "Neutral Hindi voice",
+        "sample_rate": 22050,
+        "voice_id": "hi_neutral_001"
+      },
+      "uplifting": {
+        "voice_tag": "hi_in_female_energetic",
+        "description": "Energetic Hindi female voice",
+        "sample_rate": 22050,
+        "voice_id": "hi_uplifting_f_001"
+      }
+    },
+    "sa": {
+      "devotional": {
+        "voice_tag": "sa_in_male_devotional",
+        "description": "Traditional Sanskrit male voice for spiritual content",
+        "sample_rate": 22050,
+        "voice_id": "sa_devotional_m_001"
+      },
+      "formal": {
+        "voice_tag": "sa_in_male_formal",
+        "description": "Formal Sanskrit male voice",
+        "sample_rate": 22050,
+        "voice_id": "sa_formal_m_001"
+      },
+      "neutral": {
+        "voice_tag": "sa_in_neutral",
+        "description": "Neutral Sanskrit voice",
+        "sample_rate": 22050,
+        "voice_id": "sa_neutral_001"
+      }
+    },
+    "mr": {
+      "formal": {
+        "voice_tag": "mr_in_male_professional",
+        "description": "Professional Marathi male voice",
+        "sample_rate": 22050,
+        "voice_id": "mr_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "mr_in_female_conversational",
+        "description": "Friendly Marathi female voice",
+        "sample_rate": 22050,
+        "voice_id": "mr_casual_f_001"
+      },
+      "devotional": {
+        "voice_tag": "mr_in_female_devotional",
+        "description": "Devotional Marathi female voice",
+        "sample_rate": 22050,
+        "voice_id": "mr_devotional_f_001"
+      }
+    },
+    "gu": {
+      "formal": {
+        "voice_tag": "gu_in_male_professional",
+        "description": "Professional Gujarati male voice",
+        "sample_rate": 22050,
+        "voice_id": "gu_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "gu_in_female_conversational",
+        "description": "Friendly Gujarati female voice",
+        "sample_rate": 22050,
+        "voice_id": "gu_casual_f_001"
+      }
+    },
+    "ta": {
+      "formal": {
+        "voice_tag": "ta_in_male_professional",
+        "description": "Professional Tamil male voice",
+        "sample_rate": 22050,
+        "voice_id": "ta_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "ta_in_female_conversational",
+        "description": "Friendly Tamil female voice",
+        "sample_rate": 22050,
+        "voice_id": "ta_casual_f_001"
+      }
+    },
+    "te": {
+      "formal": {
+        "voice_tag": "te_in_male_professional",
+        "description": "Professional Telugu male voice",
+        "sample_rate": 22050,
+        "voice_id": "te_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "te_in_female_conversational",
+        "description": "Friendly Telugu female voice",
+        "sample_rate": 22050,
+        "voice_id": "te_casual_f_001"
+      }
+    },
+    "kn": {
+      "formal": {
+        "voice_tag": "kn_in_male_professional",
+        "description": "Professional Kannada male voice",
+        "sample_rate": 22050,
+        "voice_id": "kn_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "kn_in_female_conversational",
+        "description": "Friendly Kannada female voice",
+        "sample_rate": 22050,
+        "voice_id": "kn_casual_f_001"
+      }
+    },
+    "ml": {
+      "formal": {
+        "voice_tag": "ml_in_male_professional",
+        "description": "Professional Malayalam male voice",
+        "sample_rate": 22050,
+        "voice_id": "ml_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "ml_in_female_conversational",
+        "description": "Friendly Malayalam female voice",
+        "sample_rate": 22050,
+        "voice_id": "ml_casual_f_001"
+      }
+    },
+    "bn": {
+      "formal": {
+        "voice_tag": "bn_in_male_professional",
+        "description": "Professional Bengali male voice",
+        "sample_rate": 22050,
+        "voice_id": "bn_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "bn_in_female_conversational",
+        "description": "Friendly Bengali female voice",
+        "sample_rate": 22050,
+        "voice_id": "bn_casual_f_001"
+      }
+    },
+    "de": {
+      "formal": {
+        "voice_tag": "de_de_male_professional",
+        "description": "Professional German male voice",
+        "sample_rate": 22050,
+        "voice_id": "de_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "de_de_female_conversational",
+        "description": "Friendly German female voice",
+        "sample_rate": 22050,
+        "voice_id": "de_casual_f_001"
+      }
+    },
+    "fr": {
+      "formal": {
+        "voice_tag": "fr_fr_male_professional",
+        "description": "Professional French male voice",
+        "sample_rate": 22050,
+        "voice_id": "fr_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "fr_fr_female_conversational",
+        "description": "Friendly French female voice",
+        "sample_rate": 22050,
+        "voice_id": "fr_casual_f_001"
+      }
+    },
+    "es": {
+      "formal": {
+        "voice_tag": "es_es_male_professional",
+        "description": "Professional Spanish male voice",
+        "sample_rate": 22050,
+        "voice_id": "es_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "es_es_female_conversational",
+        "description": "Friendly Spanish female voice",
+        "sample_rate": 22050,
+        "voice_id": "es_casual_f_001"
+      }
+    },
+    "it": {
+      "formal": {
+        "voice_tag": "it_it_male_professional",
+        "description": "Professional Italian male voice",
+        "sample_rate": 22050,
+        "voice_id": "it_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "it_it_female_conversational",
+        "description": "Friendly Italian female voice",
+        "sample_rate": 22050,
+        "voice_id": "it_casual_f_001"
+      }
+    },
+    "pt": {
+      "formal": {
+        "voice_tag": "pt_pt_male_professional",
+        "description": "Professional Portuguese male voice",
+        "sample_rate": 22050,
+        "voice_id": "pt_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "pt_pt_female_conversational",
+        "description": "Friendly Portuguese female voice",
+        "sample_rate": 22050,
+        "voice_id": "pt_casual_f_001"
+      }
+    },
+    "ru": {
+      "formal": {
+        "voice_tag": "ru_ru_male_professional",
+        "description": "Professional Russian male voice",
+        "sample_rate": 22050,
+        "voice_id": "ru_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "ru_ru_female_conversational",
+        "description": "Friendly Russian female voice",
+        "sample_rate": 22050,
+        "voice_id": "ru_casual_f_001"
+      }
+    },
+    "ja": {
+      "formal": {
+        "voice_tag": "ja_jp_male_professional",
+        "description": "Professional Japanese male voice",
+        "sample_rate": 22050,
+        "voice_id": "ja_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "ja_jp_female_conversational",
+        "description": "Friendly Japanese female voice",
+        "sample_rate": 22050,
+        "voice_id": "ja_casual_f_001"
+      }
+    },
+    "ko": {
+      "formal": {
+        "voice_tag": "ko_kr_male_professional",
+        "description": "Professional Korean male voice",
+        "sample_rate": 22050,
+        "voice_id": "ko_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "ko_kr_female_conversational",
+        "description": "Friendly Korean female voice",
+        "sample_rate": 22050,
+        "voice_id": "ko_casual_f_001"
+      }
+    },
+    "zh": {
+      "formal": {
+        "voice_tag": "zh_cn_male_professional",
+        "description": "Professional Chinese male voice",
+        "sample_rate": 22050,
+        "voice_id": "zh_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "zh_cn_female_conversational",
+        "description": "Friendly Chinese female voice",
+        "sample_rate": 22050,
+        "voice_id": "zh_casual_f_001"
+      }
+    },
+    "ar": {
+      "formal": {
+        "voice_tag": "ar_sa_male_professional",
+        "description": "Professional Arabic male voice",
+        "sample_rate": 22050,
+        "voice_id": "ar_prof_m_001"
+      },
+      "casual": {
+        "voice_tag": "ar_sa_female_conversational",
+        "description": "Friendly Arabic female voice",
+        "sample_rate": 22050,
+        "voice_id": "ar_casual_f_001"
+      }
+    }
+  },
+  "fallback_voices": {
+    "default_male": "en_us_male_professional",
+    "default_female": "en_us_female_conversational",
+    "default_neutral": "en_us_neutral"
+  },
+  "voice_quality_settings": {
+    "high_quality": {
+      "sample_rate": 44100,
+      "bit_rate": 320
+    },
+    "standard_quality": {
+      "sample_rate": 22050,
+      "bit_rate": 128
+    },
+    "low_quality": {
+      "sample_rate": 16000,
+      "bit_rate": 64
+    }
+  }
+}

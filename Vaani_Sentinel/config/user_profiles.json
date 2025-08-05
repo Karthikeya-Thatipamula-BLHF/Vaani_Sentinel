@@ -1,0 +1,75 @@
+{
+  "user_profiles": {
+    "spiritual_seeker": {
+      "name": "Spiritual Seeker",
+      "preferred_tone": "devotional",
+      "language_preferences": [
+        "en",
+        "hi",
+        "sa"
+      ],
+      "content_preferences": {
+        "spiritual_content": 1.0,
+        "educational_content": 0.5,
+        "motivational_content": 0.5
+      },
+      "tone_adjustments": {
+        "formality_level": 0.6,
+        "spiritual_context": 0.9,
+        "cultural_sensitivity": 0.6
+      }
+    },
+    "professional": {
+      "name": "Professional",
+      "preferred_tone": "formal",
+      "language_preferences": [
+        "en"
+      ],
+      "content_preferences": {
+        "spiritual_content": 0.5,
+        "educational_content": 0.8999999999999999,
+        "motivational_content": 0.7
+      },
+      "tone_adjustments": {
+        "formality_level": 0.6,
+        "spiritual_context": 0.3,
+        "cultural_sensitivity": 0.6
+      }
+    },
+    "educator": {
+      "name": "Educator",
+      "preferred_tone": "casual",
+      "language_preferences": [
+        "en",
+        "hi"
+      ],
+      "content_preferences": {
+        "spiritual_content": 0.5,
+        "educational_content": 1.0,
+        "motivational_content": 0.5
+      },
+      "tone_adjustments": {
+        "formality_level": 0.43749999999999994,
+        "spiritual_context": 0.6,
+        "cultural_sensitivity": 0.6
+      }
+    },
+    "entertainer": {
+      "name": "Entertainer",
+      "preferred_tone": "casual",
+      "language_preferences": [
+        "en"
+      ],
+      "content_preferences": {
+        "spiritual_content": 0.5,
+        "educational_content": 0.8999999999999999,
+        "motivational_content": 0.7
+      },
+      "tone_adjustments": {
+        "formality_level": 0.35714285714285715,
+        "spiritual_context": 0.2,
+        "cultural_sensitivity": 0.6
+      }
+    }
+  }
+}

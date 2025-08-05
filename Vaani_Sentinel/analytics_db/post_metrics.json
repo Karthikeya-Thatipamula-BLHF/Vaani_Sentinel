@@ -1,0 +1,361 @@
+{
+  "posts": [
+    {
+      "content_id": "task3_test_20250802_102200_instagram",
+      "platform": "instagram",
+      "language": "en",
+      "voice_tag": "en_us_female_conversational",
+      "tone": "inspirational",
+      "content_preview": "Gratitude transforms ordinary moments into extraordinary blessings",
+      "metrics": {
+        "views": 3582,
+        "likes": 59,
+        "shares": 39,
+        "comments": 18,
+        "clicks": 42,
+        "saves": 14
+      },
+      "engagement_rate": 0.0324,
+      "performance_category": "medium_performing",
+      "timestamp": "2025-08-02T10:22:06.403593",
+      "metadata": {
+        "voice_multiplier": 1.186,
+        "base_metrics": {
+          "views": 3021,
+          "likes": 50,
+          "shares": 33,
+          "comments": 16,
+          "clicks": 36,
+          "saves": 12
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "task3_test_20250802_102200_twitter",
+      "platform": "twitter",
+      "language": "en",
+      "voice_tag": "en_us_female_conversational",
+      "tone": "inspirational",
+      "content_preview": "Gratitude transforms ordinary moments into extraordinary blessings",
+      "metrics": {
+        "views": 2444,
+        "likes": 143,
+        "shares": 24,
+        "comments": 1,
+        "clicks": 32,
+        "saves": 5
+      },
+      "engagement_rate": 0.0687,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:22:08.427507",
+      "metadata": {
+        "voice_multiplier": 1.281,
+        "base_metrics": {
+          "views": 1908,
+          "likes": 112,
+          "shares": 19,
+          "comments": 1,
+          "clicks": 25,
+          "saves": 4
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "task3_test_20250802_102200_linkedin",
+      "platform": "linkedin",
+      "language": "en",
+      "voice_tag": "en_us_female_conversational",
+      "tone": "inspirational",
+      "content_preview": "Gratitude transforms ordinary moments into extraordinary blessings",
+      "metrics": {
+        "views": 1246,
+        "likes": 93,
+        "shares": 4,
+        "comments": 10,
+        "clicks": 45,
+        "saves": 8
+      },
+      "engagement_rate": 0.0859,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:22:10.464899",
+      "metadata": {
+        "voice_multiplier": 1.178,
+        "base_metrics": {
+          "views": 1058,
+          "likes": 79,
+          "shares": 4,
+          "comments": 9,
+          "clicks": 39,
+          "saves": 7
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "demo_20250802_102701_instagram",
+      "platform": "instagram",
+      "language": "es",
+      "voice_tag": "es_es_male_professional",
+      "tone": "devotional",
+      "content_preview": "Peace comes from within. Do not seek it without.",
+      "metrics": {
+        "views": 3373,
+        "likes": 208,
+        "shares": 21,
+        "comments": 13,
+        "clicks": 30,
+        "saves": 8
+      },
+      "engagement_rate": 0.0717,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:27:05.191650",
+      "metadata": {
+        "voice_multiplier": 0.98,
+        "base_metrics": {
+          "views": 3442,
+          "likes": 213,
+          "shares": 22,
+          "comments": 14,
+          "clicks": 31,
+          "saves": 9
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "demo_20250802_102701_twitter",
+      "platform": "twitter",
+      "language": "es",
+      "voice_tag": "es_es_male_professional",
+      "tone": "devotional",
+      "content_preview": "Peace comes from within. Do not seek it without.",
+      "metrics": {
+        "views": 1487,
+        "likes": 75,
+        "shares": 33,
+        "comments": 3,
+        "clicks": 70,
+        "saves": 2
+      },
+      "engagement_rate": 0.0746,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:27:07.238630",
+      "metadata": {
+        "voice_multiplier": 1.115,
+        "base_metrics": {
+          "views": 1334,
+          "likes": 68,
+          "shares": 30,
+          "comments": 3,
+          "clicks": 63,
+          "saves": 2
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "demo_20250802_102701_linkedin",
+      "platform": "linkedin",
+      "language": "es",
+      "voice_tag": "es_es_male_professional",
+      "tone": "devotional",
+      "content_preview": "Peace comes from within. Do not seek it without.",
+      "metrics": {
+        "views": 1415,
+        "likes": 71,
+        "shares": 5,
+        "comments": 13,
+        "clicks": 80,
+        "saves": 29
+      },
+      "engagement_rate": 0.0629,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:27:09.288510",
+      "metadata": {
+        "voice_multiplier": 1.465,
+        "base_metrics": {
+          "views": 966,
+          "likes": 49,
+          "shares": 4,
+          "comments": 9,
+          "clicks": 55,
+          "saves": 20
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "content_20250802_104048",
+      "platform": "instagram",
+      "language": "en",
+      "voice_tag": "en_us_neutral",
+      "tone": "devotional",
+      "content_preview": "✨ 💫 🌸 🧘‍♀️ ✨ Meditation brings peace to the mind and clarity to the soul 🕉️\n\nTake a moment to reflec...",
+      "metrics": {
+        "views": 3279,
+        "likes": 93,
+        "shares": 6,
+        "comments": 15,
+        "clicks": 48,
+        "saves": 31
+      },
+      "engagement_rate": 0.0348,
+      "performance_category": "medium_performing",
+      "timestamp": "2025-08-02T10:40:50.159559",
+      "metadata": {
+        "voice_multiplier": 1.098,
+        "base_metrics": {
+          "views": 2987,
+          "likes": 85,
+          "shares": 6,
+          "comments": 14,
+          "clicks": 44,
+          "saves": 29
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "demo_20250802_104241_instagram",
+      "platform": "instagram",
+      "language": "es",
+      "voice_tag": "es_es_male_professional",
+      "tone": "devotional",
+      "content_preview": "Peace comes from within. Do not seek it without.",
+      "metrics": {
+        "views": 1195,
+        "likes": 73,
+        "shares": 14,
+        "comments": 14,
+        "clicks": 35,
+        "saves": 21
+      },
+      "engagement_rate": 0.0845,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:42:45.527868",
+      "metadata": {
+        "voice_multiplier": 1.081,
+        "base_metrics": {
+          "views": 1106,
+          "likes": 68,
+          "shares": 13,
+          "comments": 13,
+          "clicks": 33,
+          "saves": 20
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "demo_20250802_104241_twitter",
+      "platform": "twitter",
+      "language": "es",
+      "voice_tag": "es_es_male_professional",
+      "tone": "devotional",
+      "content_preview": "Peace comes from within. Do not seek it without.",
+      "metrics": {
+        "views": 821,
+        "likes": 87,
+        "shares": 18,
+        "comments": 6,
+        "clicks": 37,
+        "saves": 8
+      },
+      "engagement_rate": 0.1352,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:42:47.581517",
+      "metadata": {
+        "voice_multiplier": 1.007,
+        "base_metrics": {
+          "views": 816,
+          "likes": 87,
+          "shares": 18,
+          "comments": 6,
+          "clicks": 37,
+          "saves": 8
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "demo_20250802_104241_linkedin",
+      "platform": "linkedin",
+      "language": "es",
+      "voice_tag": "es_es_male_professional",
+      "tone": "devotional",
+      "content_preview": "Peace comes from within. Do not seek it without.",
+      "metrics": {
+        "views": 1675,
+        "likes": 98,
+        "shares": 10,
+        "comments": 3,
+        "clicks": 52,
+        "saves": 24
+      },
+      "engagement_rate": 0.0663,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:42:49.613562",
+      "metadata": {
+        "voice_multiplier": 1.313,
+        "base_metrics": {
+          "views": 1276,
+          "likes": 75,
+          "shares": 8,
+          "comments": 3,
+          "clicks": 40,
+          "saves": 19
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    },
+    {
+      "content_id": "content_20250802_104325",
+      "platform": "instagram",
+      "language": "en",
+      "voice_tag": "en_us_neutral",
+      "tone": "devotional",
+      "content_preview": "✨ 🌸 🕉️ ✨ Meditation brings peace to the mind and clarity to the soul 🕉️\n\nTake a moment to reflect on...",
+      "metrics": {
+        "views": 3264,
+        "likes": 238,
+        "shares": 13,
+        "comments": 12,
+        "clicks": 61,
+        "saves": 23
+      },
+      "engagement_rate": 0.0806,
+      "performance_category": "high_performing",
+      "timestamp": "2025-08-02T10:43:27.231962",
+      "metadata": {
+        "voice_multiplier": 0.926,
+        "base_metrics": {
+          "views": 3525,
+          "likes": 258,
+          "shares": 15,
+          "comments": 14,
+          "clicks": 66,
+          "saves": 25
+        },
+        "is_simulation": true,
+        "task": "task3_agent_k"
+      }
+    }
+  ],
+  "metadata": {
+    "created_at": "2025-08-02T10:22:06.403657",
+    "last_updated": "2025-08-02T10:43:27.232321",
+    "total_posts": 11
+  }
+}
