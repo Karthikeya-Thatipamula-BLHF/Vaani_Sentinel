@@ -198,4 +198,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by [Karthikeya Thatipamula](https://github.com/Karthikeya-Thatipamula-BLHF)**
+**Built with ❤️ by [Karthikeya Thatipamula](https://github.com/Karthikeya-Thatipamula)**
