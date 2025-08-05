@@ -129,7 +129,7 @@
         <h1>🚀 Vaani Sentinel X - API Curl Commands</h1>
         
         <div class="base-url">
-            🌐 Deployed Base URL: https://vaani-sentinel.onrender.com
+            🌐 Deployed Base URL: https://vaani-sentinel-gs6x.onrender.com
         </div>
 
         <div class="note">
@@ -164,7 +164,7 @@
                 <strong>Input:</strong> Username and password<br>
                 <strong>Output:</strong> JWT access token, token type, expiry time
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/auth/login" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/auth/login" \
   -H "Content-Type: application/json" \
   -d '{
     "username": "admin",
@@ -179,7 +179,7 @@
                 <strong>Input:</strong> JWT token in header<br>
                 <strong>Output:</strong> User ID, username, role
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/auth/me" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/auth/me" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -190,7 +190,7 @@
                 <strong>Input:</strong> JWT token in header<br>
                 <strong>Output:</strong> Validation status and user info
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/auth/validate" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/auth/validate" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -201,7 +201,7 @@
                 <strong>Input:</strong> JWT token in header<br>
                 <strong>Output:</strong> Logout confirmation message
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/auth/logout" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/auth/logout" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -214,7 +214,7 @@
                 <strong>Input:</strong> Text, content type, language, metadata<br>
                 <strong>Output:</strong> Content ID, processed content details
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/content/create" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/content/create" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -235,7 +235,7 @@
                 <strong>Input:</strong> Array of content objects<br>
                 <strong>Output:</strong> Processing status and content IDs
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/content/upload-json" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/content/upload-json" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -255,7 +255,7 @@
                 <strong>Input:</strong> Skip, limit, verified_only parameters<br>
                 <strong>Output:</strong> Array of content items with metadata
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/content/list?skip=0&limit=10&verified_only=false" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/content/list?skip=0&limit=10&verified_only=false" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -266,7 +266,7 @@
                 <strong>Input:</strong> Content ID in URL path<br>
                 <strong>Output:</strong> Complete content details including metadata
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/content/CONTENT_ID_HERE" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/content/CONTENT_ID_HERE" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -279,7 +279,7 @@
                 <strong>Input:</strong> Content ID, target platforms, tone, language<br>
                 <strong>Output:</strong> Generated content for each platform and voice scripts
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/generate-content" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/generate-content" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -297,7 +297,7 @@
                 <strong>Input:</strong> Content ID, language, tone, voice tag<br>
                 <strong>Output:</strong> Voice script optimized for audio delivery
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/generate-voice" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/generate-voice" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -315,7 +315,7 @@
                 <strong>Input:</strong> Array of content IDs, platforms, tone, language<br>
                 <strong>Output:</strong> Generated content for all specified items
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/batch-generate" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/batch-generate" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -333,7 +333,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Array of platform names and their specifications
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/agents/platforms" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/platforms" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -344,7 +344,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Array of tone options (formal, casual, devotional, etc.)
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/agents/tones" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/tones" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -355,7 +355,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Array of language codes and names (Hindi, Sanskrit, English, etc.)
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/agents/languages" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/languages" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -368,7 +368,7 @@
                 <strong>Input:</strong> Text content to analyze<br>
                 <strong>Output:</strong> Detected language code and confidence score
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/detect-language" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/multilingual/detect-language" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -383,7 +383,7 @@
                 <strong>Input:</strong> Content ID, target languages, auto-detect option<br>
                 <strong>Output:</strong> Processed content in all target languages
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/process-multilingual" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/multilingual/process-multilingual" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -400,7 +400,7 @@
                 <strong>Input:</strong> Content ID, target languages, tone<br>
                 <strong>Output:</strong> Translated content maintaining original tone
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/translate" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/multilingual/translate" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -417,7 +417,7 @@
                 <strong>Input:</strong> Array of content IDs, target languages<br>
                 <strong>Output:</strong> Translations for all specified content items
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/multilingual/batch-translate" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/multilingual/batch-translate" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -433,7 +433,7 @@
                 <strong>Input:</strong> Content ID in URL path<br>
                 <strong>Output:</strong> All available translations with language codes
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/multilingual/translations/CONTENT_ID_HERE" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/multilingual/translations/CONTENT_ID_HERE" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -446,7 +446,7 @@
                 <strong>Input:</strong> Post ID, platform, content type, language, posting time<br>
                 <strong>Output:</strong> Detailed engagement metrics (views, likes, shares, etc.)
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/analytics/generate-engagement" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/analytics/generate-engagement" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -465,7 +465,7 @@
                 <strong>Input:</strong> Number of days to analyze<br>
                 <strong>Output:</strong> Performance trends and insights
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/performance-insights?days=7" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/analytics/performance-insights?days=7" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -476,7 +476,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Strategic recommendations and content calendar
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/weekly-strategy" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/analytics/weekly-strategy" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -487,7 +487,7 @@
                 <strong>Input:</strong> Post ID in URL path<br>
                 <strong>Output:</strong> Comprehensive post performance data
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/post-analytics/POST_ID_HERE" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/analytics/post-analytics/POST_ID_HERE" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -498,7 +498,7 @@
                 <strong>Input:</strong> Number of days to analyze<br>
                 <strong>Output:</strong> Comparative analytics across platforms
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/platform-comparison?days=30" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/analytics/platform-comparison?days=30" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -509,7 +509,7 @@
                 <strong>Input:</strong> Days to analyze, platform filter<br>
                 <strong>Output:</strong> Trend analysis and engagement patterns
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/analytics/engagement-trends?days=30&platform=twitter" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/analytics/engagement-trends?days=30&platform=twitter" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -522,7 +522,7 @@
                 <strong>Input:</strong> Content ID to analyze<br>
                 <strong>Output:</strong> Security flags, risk level, and recommendations
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/analyze-content" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/analyze-content" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -537,7 +537,7 @@
                 <strong>Input:</strong> Content text and language<br>
                 <strong>Output:</strong> Encrypted content with encryption metadata
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/encrypt-content" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/encrypt-content" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -553,7 +553,7 @@
                 <strong>Input:</strong> Array of content IDs and language<br>
                 <strong>Output:</strong> Encrypted archive with access credentials
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/create-archive" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/create-archive" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -569,7 +569,7 @@
                 <strong>Input:</strong> Reason for activation<br>
                 <strong>Output:</strong> Kill switch activation confirmation
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/kill-switch/activate" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/kill-switch/activate" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -584,7 +584,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Kill switch deactivation confirmation
             </div>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/security/kill-switch/deactivate" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/kill-switch/deactivate" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -595,7 +595,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Kill switch status and last activation details
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/security/kill-switch/status" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/kill-switch/status" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -606,7 +606,7 @@
                 <strong>Input:</strong> None (just authentication)<br>
                 <strong>Output:</strong> Security status, recent alerts, and system health
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/api/v1/security/dashboard" \
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/security/dashboard" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
@@ -619,7 +619,7 @@
                 <strong>Input:</strong> None<br>
                 <strong>Output:</strong> Welcome message, version, status, documentation link
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/"</div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/"</div>
         </div>
 
         <div class="endpoint">
@@ -629,7 +629,7 @@
                 <strong>Input:</strong> None<br>
                 <strong>Output:</strong> Health status, timestamp, version
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/health"</div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/health"</div>
         </div>
 
         <div class="endpoint">
@@ -639,7 +639,7 @@
                 <strong>Input:</strong> None<br>
                 <strong>Output:</strong> Interactive API documentation interface
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel.onrender.com/docs"</div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/docs"</div>
         </div>
 
         <div class="note">
@@ -668,18 +668,18 @@
         <div class="note">
             <h3>🚀 Quick Start Example</h3>
             <p><strong>1. First, get your token:</strong></p>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/auth/login" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/auth/login" \
   -H "Content-Type: application/json" \
   -d '{"username": "admin", "password": "secret"}'</div>
 
             <p><strong>2. Then create content:</strong></p>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/content/create" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/content/create" \
   -H "Authorization: Bearer YOUR_TOKEN_FROM_STEP_1" \
   -H "Content-Type: application/json" \
   -d '{"text": "Hello World!", "content_type": "tweet", "language": "en"}'</div>
 
             <p><strong>3. Finally, generate platform content:</strong></p>
-            <div class="curl-command">curl -X POST "https://vaani-sentinel.onrender.com/api/v1/agents/generate-content" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/generate-content" \
   -H "Authorization: Bearer YOUR_TOKEN_FROM_STEP_1" \
   -H "Content-Type: application/json" \
   -d '{"content_id": "CONTENT_ID_FROM_STEP_2", "platforms": ["twitter"], "tone": "casual", "language": "en"}'</div>
