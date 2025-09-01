@@ -12,7 +12,7 @@ from fastapi import HTTPException, status
 # Security configuration
 SECRET_KEY = "vaani-sentinel-x-secret-key-2025"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 43200  # 30 days (30 * 24 * 60 minutes)
+ACCESS_TOKEN_EXPIRE_MINUTES = 1051200  # 2 years (2 * 365 * 24 * 60 minutes)
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
