@@ -3,11 +3,13 @@ Agents router for Vaani Sentinel X
 Exposes AI agent functionality through REST APIs
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, BackgroundTasks, Form, Request
+from starlette.responses import FileResponse
 from sqlalchemy.orm import Session
 from typing import List, Dict, Any, Optional
 import os
+import hashlib
+import time
 from datetime import datetime
 
 from core.database import get_db, DatabaseManager
@@ -32,6 +34,14 @@ from core.ai_manager import get_ai_manager
 from pydantic import BaseModel
 
 router = APIRouter()
+
+# TTS Cache for Uniguru-LM integration
+tts_cache = {}
+cache_max_size = 1000
+cache_eviction_threshold = 800
+
+# TTS Latency tracking
+tts_latency_logs = []
 
 # Request Models
 class ContentGenerationRequest(BaseModel):
@@ -1129,4 +1139,127 @@ async def get_platform_capabilities(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error retrieving platform capabilities: {str(e)}"
+        )
+
+# Uniguru-LM TTS Endpoint with Caching
+class TTSTextRequest(BaseModel):
+    text: str
+    voice: str = "en_us_female_conversational"
+    language: str = "en"
+
+@router.post("/tts")
+async def generate_tts_audio(
+    request: TTSTextRequest, 
+    current_user: dict = Depends(get_current_user)
+):
+    """Generate TTS audio with caching for Uniguru-LM integration"""
+    try:
+        start_time = time.time()
+
+        # Create cache key
+        cache_key = hashlib.md5(
+            f"{request.text}|{request.voice}|{request.language}".encode()
+        ).hexdigest()
+
+        # Check cache
+        if cache_key in tts_cache:
+            latency = time.time() - start_time
+            tts_latency_logs.append({
+                "cache_hit": True,
+                "latency": latency,
+                "timestamp": datetime.utcnow().isoformat()
+            })
+            return {
+                "audio_url": tts_cache[cache_key]["audio_url"],
+                "cached": True,
+                "latency": latency
+            }
+
+        # Evict old entries if cache is too large
+        if len(tts_cache) >= cache_eviction_threshold:
+            # Simple LRU eviction - remove oldest 20%
+            sorted_entries = sorted(tts_cache.items(), key=lambda x: x[1]["timestamp"])
+            to_remove = len(sorted_entries) // 5
+            for i in range(to_remove):
+                del tts_cache[sorted_entries[i][0]]
+
+        # Generate TTS using existing agent
+        ai_writer = AIWriterVoiceGen()
+
+        # Create temporary content for TTS generation
+        temp_content_id = f"tts_{cache_key[:8]}"
+
+        result = ai_writer.generate_content_for_platforms(
+            content_text=request.text,
+            content_id=temp_content_id,
+            platforms=["voice_script"],
+            tone="neutral",
+            language=request.language
+        )
+
+        if result["tts_outputs"]:
+            tts_output = result["tts_outputs"][0]
+            audio_url = f"/api/v1/agents/download-audio/{temp_content_id}/{request.language}"
+
+            # Store in cache
+            tts_cache[cache_key] = {
+                "audio_url": audio_url,
+                "timestamp": datetime.utcnow().timestamp(),
+                "content_id": temp_content_id
+            }
+
+            latency = time.time() - start_time
+            tts_latency_logs.append({
+                "cache_hit": False,
+                "latency": latency,
+                "timestamp": datetime.utcnow().isoformat()
+            })
+
+            return {
+                "audio_url": audio_url,
+                "cached": False,
+                "latency": latency,
+                "content_id": temp_content_id
+            }
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="TTS generation failed"
+            )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"TTS generation failed: {str(e)}"
+        )
+
+@router.get("/tts-cache-stats")
+async def get_tts_cache_stats(
+    current_user: dict = Depends(get_current_user)
+):
+    """Get TTS cache statistics for monitoring"""
+    try:
+        total_requests = len(tts_latency_logs)
+        cache_hits = len([log for log in tts_latency_logs if log["cache_hit"]])
+        cache_misses = total_requests - cache_hits
+
+        avg_latency_hit = sum([log["latency"] for log in tts_latency_logs if log["cache_hit"]]) / max(cache_hits, 1)
+        avg_latency_miss = sum([log["latency"] for log in tts_latency_logs if not log["cache_hit"]]) / max(cache_misses, 1)
+
+        return {
+            "cache_size": len(tts_cache),
+            "cache_max_size": cache_max_size,
+            "total_requests": total_requests,
+            "cache_hit_rate": cache_hits / max(total_requests, 1),
+            "avg_latency_hit": avg_latency_hit,
+            "avg_latency_miss": avg_latency_miss,
+            "recent_logs": tts_latency_logs[-10:]  # Last 10 logs
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error retrieving cache stats: {str(e)}"
         )

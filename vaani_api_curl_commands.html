@@ -349,13 +349,32 @@
         </div>
 
         <div class="endpoint">
-            <h3><span class="method get">GET</span> Get Supported Languages</h3>
+            <h3><span class="method post">POST</span> Generate TTS Audio</h3>
             <div class="description">
-                <strong>Purpose:</strong> Get list of all supported languages<br>
-                <strong>Input:</strong> None (just authentication)<br>
-                <strong>Output:</strong> Array of language codes and names (Hindi, Sanskrit, English, etc.)
+                <strong>Purpose:</strong> Generate text-to-speech audio with intelligent caching<br>
+                <strong>Input:</strong> Text content, voice tag, language<br>
+                <strong>Output:</strong> Audio URL, cache status, latency metrics<br>
+                <strong>Features:</strong> Hash-based caching, LRU eviction, performance monitoring
             </div>
-            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/languages" \
+            <div class="curl-command">curl -X POST "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/tts" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "Hello, this is a test message for TTS generation.",
+    "voice": "en_us_female_conversational",
+    "language": "en"
+  }'</div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> TTS Cache Statistics</h3>
+            <div class="description">
+                <strong>Purpose:</strong> Get TTS cache performance metrics and monitoring data<br>
+                <strong>Input:</strong> None (just authentication)<br>
+                <strong>Output:</strong> Cache size, hit rate, latency averages, recent logs<br>
+                <strong>Features:</strong> Real-time monitoring, performance analytics, usage tracking
+            </div>
+            <div class="curl-command">curl -X GET "https://vaani-sentinel-gs6x.onrender.com/api/v1/agents/tts-cache-stats" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"</div>
         </div>
 
