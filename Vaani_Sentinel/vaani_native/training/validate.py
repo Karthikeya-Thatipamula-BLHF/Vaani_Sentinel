@@ -254,7 +254,8 @@ def run_validation(baseline_samples: list, finetuned_samples: list) -> dict:
     logger.info(f"Baseline MOS-proxy: {summary['baseline_avg_mos']:.2f}")
     logger.info(f"Fine-tuned MOS-proxy: {summary['finetuned_avg_mos']:.2f}")
     logger.info(f"Improvement: +{summary['improvement']:.2f} points")
-    logger.info(f"Improvement: +{summary['improvement_percent']:.1f}%")    logger.info(f"Target Achieved: {'✅ YES' if summary['target_achieved'] else '❌ NO'} (>10% required)")
+    logger.info(f"Improvement: +{summary['improvement_percent']:.1f}%")
+    logger.info(f"Target Achieved: {'✅ YES' if summary['target_achieved'] else '❌ NO'} (>10% required)")
 
     return summary
 
