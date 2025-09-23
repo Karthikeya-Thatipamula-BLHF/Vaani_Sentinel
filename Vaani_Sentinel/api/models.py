@@ -66,6 +66,24 @@ class TTSRequest(BaseModel):
     voice_tag: Optional[str] = None
     tone: Optional[Tone] = Tone.NEUTRAL
 
+class NativeTTSRequest(BaseModel):
+    """Native TTS synthesis request with prosody control"""
+    text: str = Field(..., description="Text to synthesize", max_length=500)
+    voice: str = Field("gurukul_neutral", description="Voice identifier")
+    language: str = Field("en", description="Language code (en, hi)")
+    prosody_policy: bool = Field(True, description="Use RL prosody controller")
+    additional_params: Optional[Dict[str, Any]] = Field(None, description="Manual prosody parameters")
+
+class NativeTTSCacheStats(BaseModel):
+    """Native TTS cache statistics response"""
+    cache_size: int
+    max_cache_size: int
+    total_requests: int
+    cache_hit_rate: float
+    avg_latency_hit: float
+    avg_latency_miss: float
+    implementation_status: str
+
 # Response Models
 class ContentResponse(BaseModel):
     content_id: str

@@ -40,6 +40,18 @@ class Settings(BaseSettings):
     
     # TTS
     google_tts_credentials_path: str = "./config/google-tts-credentials.json"
+    
+    # Native TTS Configuration (Day 0 - Production-ready integration with existing voice-first architecture)
+    # Primary: Native TTS with RL prosody control. Fallback: gTTS (zero-downtime migration)
+    native_tts_enabled: bool = True
+    native_tts_model_path: str = "./vaani_native/model/"
+    native_tts_cache_size: int = 1000  # LRU cache for <0.5s cached responses
+    native_tts_gpu_device: str = "cuda:0"  # RTX 3080 primary, RTX 3060 secondary
+    native_tts_fallback_to_gtts: bool = True  # Safety: always have gTTS fallback
+    native_tts_max_text_length: int = 500  # Max characters per synthesis request
+    native_tts_sample_rate: int = 22050  # Standard sample rate for voice synthesis
+    native_tts_cache_dir: str = "./cache/native_tts/"  # NAS storage integration
+    native_tts_output_dir: str = "./output/native_tts/"  # Audio output directory
 
     # AI Model Configuration - Optimized for FREE TIER
     # Best free models based on performance, speed, and availability

@@ -102,6 +102,26 @@ class TTSOutput(Base):
     duration = Column(Float)
     created_at = Column(DateTime, default=func.now())
 
+class NativeTTSOutput(Base):
+    """Native TTS Output - Production-ready tracking for indigenous TTS with RL prosody control.
+    Extends existing TTS architecture while maintaining compatibility with existing Agent B patterns.
+    Tracks prosody parameters, quality metrics, and RL controller performance for Gurukul voice identity."""
+    __tablename__ = "native_tts_outputs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    content_id = Column(String, index=True)
+    text_hash = Column(String, index=True)  # For caching (same as existing TTS cache pattern)
+    prosody_params = Column(JSON)  # RL-controlled: pitch_shift, speed, energy, emotion
+    model_version = Column(String)  # gurukul_tts_adapter_v1, etc.
+    audio_path = Column(String)
+    latency_ms = Column(Integer)  # Performance tracking: <500ms cached, <2000ms new
+    cache_hit = Column(Boolean, default=False)
+    quality_score = Column(Float)  # MOS-proxy: spectral distance + quality metrics
+    language = Column(String)
+    voice_tag = Column(String)  # gurukul_neutral, gurukul_warm, etc.
+    duration = Column(Float)  # Audio duration in seconds
+    created_at = Column(DateTime, default=func.now())
+
 # Database dependency
 def get_db() -> Session:
     db = SessionLocal()

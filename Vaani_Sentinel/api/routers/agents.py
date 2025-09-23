@@ -15,10 +15,10 @@ from datetime import datetime
 from core.database import get_db, DatabaseManager
 from api.models import (
     ContentGenerationResponse, TTSRequest, TTSOutputResponse,
-    StatusResponse, Platform, Tone
+    StatusResponse, Platform, Tone, NativeTTSRequest, NativeTTSCacheStats
 )
 from api.routers.auth import get_current_user
-from agents.ai_writer_voicegen import AIWriterVoiceGen
+from agents.vaani_native_tts import get_native_tts
 from agents.translation_agent import get_translation_agent
 from agents.personalization_agent import get_personalization_agent
 from agents.tts_simulator import get_tts_simulator
@@ -1262,4 +1262,67 @@ async def get_tts_cache_stats(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error retrieving cache stats: {str(e)}"
+        )
+
+# Native TTS Endpoints - Day 1 Implementation
+@router.post("/tts_native/synthesize")
+async def native_tts_synthesize(
+    request: NativeTTSRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    """Native TTS synthesis with prosody control - Production endpoint"""
+    try:
+        start_time = time.time()
+
+        # Get native TTS agent
+        native_tts = get_native_tts()
+
+        # Generate synthesis
+        result = native_tts.synthesize(
+            text=request.text,
+            voice=request.voice,
+            language=request.language,
+            prosody_policy=request.prosody_policy,
+            additional_params=request.additional_params
+        )
+
+        total_time = time.time() - start_time
+
+        return {
+            "success": True,
+            "audio_url": result["audio_url"],
+            "content_id": result["content_id"],
+            "voice_tag": result["voice_tag"],
+            "language": result["language"],
+            "prosody_params": result["prosody_params"],
+            "model_version": result["model_version"],
+            "quality_score": result["quality_score"],
+            "duration": result["duration"],
+            "latency_ms": result["latency_ms"],
+            "cache_hit": result["cache_hit"],
+            "total_time": total_time,
+            "db_record_id": result.get("db_record_id")
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Native TTS synthesis failed: {str(e)}"
+        )
+
+@router.get("/tts_native/cache_stats")
+async def get_native_tts_cache_stats(
+    current_user: dict = Depends(get_current_user)
+):
+    """Native TTS cache statistics for monitoring"""
+    try:
+        native_tts = get_native_tts()
+        stats = native_tts.get_cache_stats()
+
+        return NativeTTSCacheStats(**stats)
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error retrieving native TTS cache stats: {str(e)}"
         )

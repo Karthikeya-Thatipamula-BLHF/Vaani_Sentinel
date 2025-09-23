@@ -1,0 +1,77 @@
+{
+  "model_loading": true,
+  "samples": [
+    {
+      "sample_num": 1,
+      "success": false,
+      "latency": 0,
+      "text": "Hello, this is a test of the native TTS system....",
+      "language": "en"
+    },
+    {
+      "sample_num": 2,
+      "success": false,
+      "latency": 0,
+      "text": "Vaani Sentinel X brings voice-first content creati...",
+      "language": "en"
+    },
+    {
+      "sample_num": 3,
+      "success": false,
+      "latency": 0,
+      "text": "The quick brown fox jumps over the lazy dog....",
+      "language": "en"
+    },
+    {
+      "sample_num": 4,
+      "success": false,
+      "latency": 0,
+      "text": "Welcome to Gurukul's indigenous voice technology....",
+      "language": "en"
+    },
+    {
+      "sample_num": 5,
+      "success": false,
+      "latency": 0,
+      "text": "This system supports multiple languages and voices...",
+      "language": "en"
+    },
+    {
+      "sample_num": 6,
+      "success": false,
+      "latency": 0,
+      "text": "Namaste, yeh native TTS system ka test hai....",
+      "language": "hi"
+    },
+    {
+      "sample_num": 7,
+      "success": false,
+      "latency": 0,
+      "text": "Vaani Sentinel X awaaz-first content nirman ko jee...",
+      "language": "hi"
+    },
+    {
+      "sample_num": 8,
+      "success": false,
+      "latency": 0,
+      "text": "Tez bhuri lomdi lakad ke upar se koodti hai....",
+      "language": "hi"
+    },
+    {
+      "sample_num": 9,
+      "success": false,
+      "latency": 0,
+      "text": "Gurukul ke swadeshi awaaz technology mein swagatam...",
+      "language": "hi"
+    },
+    {
+      "sample_num": 10,
+      "success": false,
+      "latency": 0,
+      "text": "Yeh system kai bhashaon aur awaazon ko support kar...",
+      "language": "hi"
+    }
+  ],
+  "cache_test": false,
+  "overall_success": false
+}
