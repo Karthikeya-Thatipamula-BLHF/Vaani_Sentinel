@@ -73,7 +73,17 @@ async def generate_content_for_platforms(
             )
         
         # Initialize Agent B
-        ai_writer = AIWriterVoiceGen()
+        try:
+            ai_writer = AIWriterVoiceGen()
+        except NameError as e:
+            # Fallback: try importing directly
+            from agents import ai_writer_voicegen
+            ai_writer = ai_writer_voicegen.AIWriterVoiceGen()
+        except Exception as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Failed to initialize AI Writer: {str(e)}"
+            )
         
         # Convert platforms to strings
         platforms = [p.value for p in request.platforms] if request.platforms else None
