@@ -12,6 +12,53 @@ A production-ready autonomous AI-powered content generation and publishing platf
 
 Vaani Sentinel X is a comprehensive AI content platform that transforms ideas into multi-platform, multilingual content with voice synthesis, analytics, and adaptive optimization. Built with 13 specialized agents working in harmony.
 
+### 🔥 NEW: Vaani-Composer-TTV Integration Sprint ✅ COMPLETE
+
+**Latest Feature**: Complete lesson pipeline integration with indigenous NLP and TTV video generation.
+
+#### 🎯 **Sprint Objective**
+Wire indigenous /tts_native into the full Gurukul lesson pipeline: Assessment → Curriculum → Lesson Script → Indigenous NLP (/compose) → /tts_native → Shashank's TTV.
+
+#### 📋 **Sprint Deliverables**
+- ✅ **/lesson/play endpoint**: Returns `{video_url, audio_url, text, citations}` for complete lesson clips
+- ✅ **/compose endpoint**: Indigenous NLP processing with Hindi/English support
+- ✅ **/vaani_converse endpoint**: Spoken dialogue loop with <3s latency
+- ✅ **TTV Integration**: Video generation with lip-sync validation
+- ✅ **Full Pipeline**: Assessment → Curriculum → Lesson Script → Compose → TTS → TTV
+
+#### 🚀 **New API Endpoints**
+```bash
+# Lesson Pipeline
+POST /api/v1/lesson/play                    # Complete lesson generation
+POST /api/v1/lesson/preview                 # Lesson audio preview
+POST /api/v1/lesson/create_assessment       # Assessment creation
+POST /api/v1/lesson/evaluate_assessment     # Assessment evaluation
+
+# Indigenous NLP
+POST /api/v1/compose/final_text             # Text composition
+GET  /api/v1/compose/supported-languages    # Language support
+GET  /api/v1/compose/supported-tones        # Tone options
+
+# Conversational AI
+POST /api/v1/converse/vaani_converse        # Spoken dialogue
+POST /api/v1/converse/start_conversation    # Start conversation
+GET  /api/v1/converse/conversation/{id}     # Conversation status
+```
+
+#### 🎵 **Audio & Video Pipeline**
+```
+Assessment → Curriculum → Lesson Script → Indigenous NLP → Native TTS → TTV Video
+    ↓           ↓           ↓            ↓            ↓          ↓
+   User      Database     AI Gen       Compose      Audio     Video
+  Knowledge  Lookup     Content     Processing   Synthesis  Generation
+```
+
+#### 📊 **Performance Targets**
+- **End-to-End Latency**: <3s for conversation, <8s for full lesson pipeline
+- **Lip-Sync Quality**: >0.85 correlation score
+- **Language Support**: Hindi + English with cultural adaptation
+- **Audio Quality**: Native TTS with RL prosody control
+
 ### ✅ Production Ready Features
 
 - **🤖 13 Specialized Agents**: Complete autonomous content pipeline
@@ -118,11 +165,34 @@ python deployment_verification.py
 
 ## 🔌 API Reference
 
-### Core Endpoints (40+)
+### Core Endpoints (50+)
 ```bash
 # Authentication
 POST /api/v1/auth/login
 POST /api/v1/auth/refresh
+
+# Lesson Pipeline (NEW)
+POST /api/v1/lesson/play                    # Complete lesson generation
+POST /api/v1/lesson/preview                 # Lesson audio preview
+POST /api/v1/lesson/create_assessment       # Assessment creation
+POST /api/v1/lesson/evaluate_assessment     # Assessment evaluation
+GET  /api/v1/lesson/playback/{id}           # Get lesson playback
+GET  /api/v1/lesson/subjects                # Supported subjects
+GET  /api/v1/lesson/performance_stats       # Pipeline performance
+
+# Indigenous NLP (NEW)
+POST /api/v1/compose/final_text             # Text composition
+GET  /api/v1/compose/compositions/{id}      # Get compositions
+GET  /api/v1/compose/supported-languages    # Language support
+GET  /api/v1/compose/supported-tones        # Tone options
+
+# Conversational AI (NEW)
+POST /api/v1/converse/vaani_converse        # Spoken dialogue
+POST /api/v1/converse/start_conversation    # Start conversation
+GET  /api/v1/converse/conversation/{id}     # Conversation status
+DELETE /api/v1/converse/conversation/{id}   # End conversation
+GET  /api/v1/converse/conversation_types    # Supported types
+GET  /api/v1/converse/performance_stats     # Performance stats
 
 # Content Generation
 POST /api/v1/agents/generate-content
@@ -140,6 +210,11 @@ POST /api/v1/agents/adjust-future-content-strategy
 # Sentiment & Targeting
 POST /api/v1/agents/adjust-sentiment
 POST /api/v1/agents/analyze-content-context
+
+# Native TTS (Enhanced)
+POST /api/v1/agents/tts_native/synthesize   # Enhanced native TTS
+GET  /api/v1/agents/tts_native/cache_stats  # Cache statistics
+GET  /api/v1/agents/download-native-audio/{id}  # Download audio
 
 # System Management
 GET /api/v1/agents/system-health

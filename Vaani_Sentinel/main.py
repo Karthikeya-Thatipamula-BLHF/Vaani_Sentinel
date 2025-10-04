@@ -22,7 +22,10 @@ from api.routers import (
     agents,
     analytics,
     multilingual,
-    security
+    security,
+    compose,
+    converse,
+    lesson
 )
 
 # Import database
@@ -62,6 +65,9 @@ app.include_router(agents.router, prefix="/api/v1/agents", tags=["AI Agents"])
 app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["Analytics"])
 app.include_router(multilingual.router, prefix="/api/v1/multilingual", tags=["Multilingual"])
 app.include_router(security.router, prefix="/api/v1/security", tags=["Security"])
+app.include_router(compose.router, prefix="/api/v1/compose", tags=["Indigenous NLP"])
+app.include_router(converse.router, prefix="/api/v1/converse", tags=["Conversational AI"])
+app.include_router(lesson.router, prefix="/api/v1/lesson", tags=["Lesson Pipeline"])
 
 @app.get("/")
 async def root():

@@ -11,14 +11,18 @@ import os
 import hashlib
 import time
 from datetime import datetime
+import json
+from collections import OrderedDict
+import uuid
+from gtts import gTTS
+from agents.vaani_native_tts import get_native_tts
 
-from core.database import get_db, DatabaseManager
+from core.database import get_db, DatabaseManager, NativeTTSOutput
 from api.models import (
-    ContentGenerationResponse, TTSRequest, TTSOutputResponse,
+    ContentGenerationResponse, TTSOutputResponse,
     StatusResponse, Platform, Tone, NativeTTSRequest, NativeTTSCacheStats
 )
 from api.routers.auth import get_current_user
-from agents.vaani_native_tts import get_native_tts
 from agents.translation_agent import get_translation_agent
 from agents.personalization_agent import get_personalization_agent
 from agents.tts_simulator import get_tts_simulator
@@ -31,12 +35,13 @@ from agents.adaptive_targeter import get_platform_targeter
 from utils.language_mapper import get_language_mapper
 from utils.simulate_translation import get_simulated_translator
 from core.ai_manager import get_ai_manager
+from agents.ai_writer_voicegen import AIWriterVoiceGen
 from pydantic import BaseModel
 
 router = APIRouter()
 
 # TTS Cache for Uniguru-LM integration
-tts_cache = {}
+tts_cache = OrderedDict()
 cache_max_size = 1000
 cache_eviction_threshold = 800
 
@@ -56,6 +61,13 @@ class VoiceGenerationRequest(BaseModel):
     tone: Optional[Tone] = Tone.NEUTRAL
     voice_tag: Optional[str] = None
 
+class TTSTextRequest(BaseModel):
+    text: str
+    voice: str = "en_us_female_conversational"
+    language: str = "en"
+
+router = APIRouter()
+
 @router.post("/generate-content", response_model=ContentGenerationResponse)
 async def generate_content_for_platforms(
     request: ContentGenerationRequest,
@@ -71,13 +83,13 @@ async def generate_content_for_platforms(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="Content not found"
             )
-        
+
         # Initialize Agent B
         ai_writer = AIWriterVoiceGen()
-        
+
         # Convert platforms to strings
         platforms = [p.value for p in request.platforms] if request.platforms else None
-        
+
         # Generate content
         result = ai_writer.generate_content_for_platforms(
             content_text=content.original_text,
@@ -86,7 +98,7 @@ async def generate_content_for_platforms(
             tone=request.tone.value,
             language=request.language
         )
-        
+
         return ContentGenerationResponse(
             content_id=result["content_id"],
             generated_content=result["generated_content"],
@@ -94,7 +106,6 @@ async def generate_content_for_platforms(
             metadata=result["metadata"],
             created_at=datetime.fromisoformat(result["metadata"]["created_at"])
         )
-        
     except HTTPException:
         raise
     except Exception as e:
@@ -317,6 +328,15 @@ async def batch_generate_content(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error in batch generation: {str(e)}"
         )
+
+@router.post("/temp-audio/{filename}")
+async def download_temp_audio(filename: str):
+    """Download temporary TTS audio file"""
+    file_path = f"temp_audio_{filename}.mp3"
+    if os.path.exists(file_path):
+        return FileResponse(path=file_path, media_type="audio/mpeg", filename=f"{filename}.mp3")
+    else:
+        raise HTTPException(status_code=404, detail="Audio file not found")
 
 @router.delete("/clear-cache")
 async def clear_content_cache(
@@ -1142,11 +1162,6 @@ async def get_platform_capabilities(
         )
 
 # Uniguru-LM TTS Endpoint with Caching
-class TTSTextRequest(BaseModel):
-    text: str
-    voice: str = "en_us_female_conversational"
-    language: str = "en"
-
 @router.post("/tts")
 async def generate_tts_audio(
     request: TTSTextRequest, 
@@ -1155,6 +1170,21 @@ async def generate_tts_audio(
     """Generate TTS audio with caching for Uniguru-LM integration"""
     try:
         start_time = time.time()
+
+        # Input validation
+        if not request.text.strip():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Text is required and cannot be empty"
+            )
+
+        # Validate language (basic check)
+        supported_languages = ['en', 'hi', 'es', 'fr', 'de', 'it', 'pt', 'ru', 'ja', 'ko', 'zh', 'ar', 'sa', 'mr', 'bn', 'ta', 'te', 'gu', 'kn', 'ml', 'pa']
+        if request.language not in supported_languages:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Unsupported language: {request.language}"
+            )
 
         # Create cache key
         cache_key = hashlib.md5(
@@ -1167,65 +1197,59 @@ async def generate_tts_audio(
             tts_latency_logs.append({
                 "cache_hit": True,
                 "latency": latency,
-                "timestamp": datetime.utcnow().isoformat()
+                "text_length": len(request.text),
+                "language": request.language
             })
-            return {
-                "audio_url": tts_cache[cache_key]["audio_url"],
-                "cached": True,
-                "latency": latency
-            }
-
-        # Evict old entries if cache is too large
-        if len(tts_cache) >= cache_eviction_threshold:
-            # Simple LRU eviction - remove oldest 20%
-            sorted_entries = sorted(tts_cache.items(), key=lambda x: x[1]["timestamp"])
-            to_remove = len(sorted_entries) // 5
-            for i in range(to_remove):
-                del tts_cache[sorted_entries[i][0]]
-
-        # Generate TTS using existing agent
-        ai_writer = AIWriterVoiceGen()
-
-        # Create temporary content for TTS generation
-        temp_content_id = f"tts_{cache_key[:8]}"
-
-        result = ai_writer.generate_content_for_platforms(
-            content_text=request.text,
-            content_id=temp_content_id,
-            platforms=["voice_script"],
-            tone="neutral",
-            language=request.language
-        )
-
-        if result["tts_outputs"]:
-            tts_output = result["tts_outputs"][0]
-            audio_url = f"/api/v1/agents/download-audio/{temp_content_id}/{request.language}"
-
-            # Store in cache
-            tts_cache[cache_key] = {
-                "audio_url": audio_url,
-                "timestamp": datetime.utcnow().timestamp(),
-                "content_id": temp_content_id
-            }
+            return JSONResponse(content=tts_cache[cache_key], media_type="application/json")
+        else:
+            # Try native TTS first
+            audio_url = None
+            temp_content_id = str(uuid.uuid4())
+            try:
+                native_tts = get_native_tts()
+                result = native_tts.synthesize(
+                    text=request.text,
+                    voice=request.voice,
+                    language=request.language,
+                    prosody_policy="default"
+                )
+                audio_url = f"/download-native-audio/{result.get('db_record_id', temp_content_id)}"
+            except Exception as e:
+                # Fallback to gTTS
+                try:
+                    tts = gTTS(text=request.text, lang=request.language, slow=False)
+                    audio_file_path = f"temp_audio_{temp_content_id}.mp3"
+                    tts.save(audio_file_path)
+                    audio_url = f"/temp-audio/{temp_content_id}"
+                except Exception as e2:
+                    raise HTTPException(
+                        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                        detail=f"TTS generation failed: native TTS error - {str(e)}, gTTS error - {str(e2)}"
+                    )
 
             latency = time.time() - start_time
             tts_latency_logs.append({
                 "cache_hit": False,
                 "latency": latency,
-                "timestamp": datetime.utcnow().isoformat()
+                "text_length": len(request.text),
+                "language": request.language
             })
 
-            return {
+            # Cache eviction
+            if len(tts_cache) >= cache_eviction_threshold:
+                tts_cache.popitem(last=False)  # Remove oldest
+
+            # Prepare response
+            response = {
                 "audio_url": audio_url,
                 "cached": False,
                 "latency": latency,
                 "content_id": temp_content_id
             }
-        else:
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="TTS generation failed"
-            )
+
+            # Cache the response
+            tts_cache[cache_key] = response
+            return response
 
     except HTTPException:
         raise
